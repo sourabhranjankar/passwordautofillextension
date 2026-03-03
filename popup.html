@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup Autofill Helper</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Signup Autofill Helper</h1>
+      <p class="hint">Save your email + password, then press <strong>Ctrl+Alt+F</strong> to autofill signup forms.</p>
+
+      <form id="credentials-form">
+        <label>
+          Email
+          <input id="email" type="email" required autocomplete="email" />
+        </label>
+
+        <label>
+          Password
+          <input id="password" type="password" required autocomplete="new-password" />
+        </label>
+
+        <button type="submit">Save credentials</button>
+      </form>
+
+      <div class="card" id="saved-state"></div>
+
+      <div class="actions">
+        <button id="reveal-once" type="button">Reveal saved credentials once</button>
+        <button id="fill-now" type="button">Fill active tab now</button>
+      </div>
+
+      <p id="message" class="message" role="status"></p>
+    </main>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
