@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Signup Autofill Helper",
-  "description": "Store signup credentials securely and autofill email/password fields with Ctrl+Shift+F.",
+  "description": "Store signup credentials securely and autofill email/password fields with Ctrl+Alt+F.",
   "version": "1.0.0",
   "permissions": [
     "storage",
@@ -22,8 +22,8 @@
   "commands": {
     "fill-signup-form": {
       "suggested_key": {
-        "default": "Ctrl+Shift+F",
-        "mac": "Command+Shift+F"
+        "default": "Ctrl+Alt+F",
+        "mac": "Command+Option+F"
       },
       "description": "Fill signup form with saved email and password"
     }

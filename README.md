@@ -2,8 +2,7 @@
 
 This extension stores one email + password and fills signup forms (including confirmation fields) with:
 
-- **Keyboard shortcut (default):** `Ctrl+Shift+F` (or `Command+Shift+F` on macOS).
-- If you prefer `Ctrl+Alt+F`, set it manually in `chrome://extensions/shortcuts`.
+- **Keyboard shortcut:** `Ctrl+Alt+F` (or `Command+Option+F` on macOS)
 - **Popup button:** "Fill active tab now"
 
 ## Features
@@ -27,7 +26,7 @@ This extension stores one email + password and fills signup forms (including con
 1. Open extension popup.
 2. Enter email/password and click **Save credentials**.
 3. Navigate to a signup page (Workday, Dayforce, etc.).
-4. Press **Ctrl+Shift+F** to autofill (or your custom shortcut).
+4. Press **Ctrl+Alt+F** to autofill.
 
 ## Notes
 
