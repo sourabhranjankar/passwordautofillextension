@@ -90,7 +90,7 @@ form.addEventListener('submit', async (event) => {
     });
 
     passwordInput.value = '';
-    setMessage('Credentials saved. Use the floating Autofill Signup button on signup pages.');
+    setMessage('Credentials saved. Use Ctrl+Alt+F on signup pages.');
     await refreshView();
   } catch (error) {
     setMessage(error.message, true);

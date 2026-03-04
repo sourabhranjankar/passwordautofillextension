@@ -52,7 +52,17 @@ async function sendFillCommandToActiveTab() {
   });
 }
 
-chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+chrome.commands.onCommand.addListener((command) => {
+  if (command !== 'fill-signup-form') {
+    return;
+  }
+
+  sendFillCommandToActiveTab().catch((error) => {
+    console.error('Autofill command failed:', error);
+  });
+});
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message?.type === 'FILL_FROM_POPUP') {
     sendFillCommandToActiveTab()
       .then(() => sendResponse({ ok: true }))
@@ -63,13 +73,6 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === 'GET_EXTENSION_SECRET') {
     getOrCreateExtensionSecret()
       .then((secret) => sendResponse({ ok: true, secret }))
-      .catch((error) => sendResponse({ ok: false, error: error.message }));
-    return true;
-  }
-
-  if (message?.type === 'GET_SAVED_CREDENTIALS') {
-    getSavedCredentials()
-      .then((credentials) => sendResponse({ ok: true, credentials }))
       .catch((error) => sendResponse({ ok: false, error: error.message }));
     return true;
   }

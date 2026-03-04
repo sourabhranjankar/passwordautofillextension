@@ -63,59 +63,6 @@ function autofillSignupCredentials({ email, password }) {
   }
 }
 
-function setButtonMessage(button, text, isError = false) {
-  button.textContent = text;
-  button.style.background = isError ? '#b91c1c' : '#2563eb';
-}
-
-function createFloatingFillButton() {
-  if (document.getElementById('signup-autofill-floating-button')) {
-    return;
-  }
-
-  const button = document.createElement('button');
-  button.id = 'signup-autofill-floating-button';
-  button.type = 'button';
-  button.textContent = 'Autofill Signup';
-  button.style.position = 'fixed';
-  button.style.top = '12px';
-  button.style.right = '12px';
-  button.style.zIndex = '2147483647';
-  button.style.padding = '8px 12px';
-  button.style.border = '0';
-  button.style.borderRadius = '999px';
-  button.style.background = '#2563eb';
-  button.style.color = '#fff';
-  button.style.fontSize = '12px';
-  button.style.fontWeight = '600';
-  button.style.cursor = 'pointer';
-  button.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
-
-  button.addEventListener('click', async () => {
-    setButtonMessage(button, 'Filling...');
-    button.disabled = true;
-
-    try {
-      const response = await chrome.runtime.sendMessage({ type: 'GET_SAVED_CREDENTIALS' });
-      if (!response?.ok) {
-        throw new Error(response?.error || 'No saved credentials available.');
-      }
-
-      autofillSignupCredentials(response.credentials);
-      setButtonMessage(button, 'Filled ✓');
-    } catch (error) {
-      setButtonMessage(button, `Error: ${error.message}`, true);
-    }
-
-    setTimeout(() => {
-      setButtonMessage(button, 'Autofill Signup');
-      button.disabled = false;
-    }, 1800);
-  });
-
-  document.documentElement.appendChild(button);
-}
-
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type !== 'AUTOFILL_SIGNUP_CREDENTIALS') {
     return false;
@@ -130,5 +77,3 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
 
   return true;
 });
-
-createFloatingFillButton();

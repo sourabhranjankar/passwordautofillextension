@@ -2,7 +2,7 @@
 
 This extension stores one email + password and fills signup forms (including confirmation fields) with:
 
-- **Floating page button:** `Autofill Signup` button appears at the top-right corner of pages.
+- **Keyboard shortcut:** `Ctrl+Alt+F` (or `Command+Option+F` on macOS)
 - **Popup button:** "Fill active tab now"
 
 ## Features
@@ -26,7 +26,7 @@ This extension stores one email + password and fills signup forms (including con
 1. Open extension popup.
 2. Enter email/password and click **Save credentials**.
 3. Navigate to a signup page (Workday, Dayforce, etc.).
-4. Click the floating **Autofill Signup** button (top-right) to autofill.
+4. Press **Ctrl+Alt+F** to autofill.
 
 ## Notes
 
